@@ -1,6 +1,6 @@
 {% extends "crycoin/layout.html" %}
 {% block body %}
-    <a class="nav-link disabled">Balance ₹{{balance}}</a>
+    <a class="nav-link disabled">Balance {{balance}} Crycoins</a>
     <div class="container" style="margin-left: 10%;">
         <h1 class="display-3">Transaction List</h1>
         <form action="{% url 'mine' %}" method="post">
@@ -17,7 +17,7 @@
                         {% if trans.signature %}
                             <h6 class="card-subtitle mb-2 text-muted">Signed</h6>
                         {% endif %}
-                        <p class="card-text">You have received ₹{{trans.amount}} from {{trans.sender}}</p>
+                        <p class="card-text">You have received {{trans.amount}} Crycoins from {{trans.sender}}</p>
                         <a href="#" class="card-link">{{trans.time_stamp}}</a>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 {% extends "crycoin/layout.html" %}
 {% block body %}
-	<a class="nav-link disabled">Balance ₹{{balance}}</a>
+	<a class="nav-link disabled">Balance {{balance}} Crycoins</a>
 	<div class="container" style="margin-left: 10%;">
 		{% if message %}
 			<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -30,7 +30,7 @@
 							<h5 class="card-title">Primary key {{block.primary_ky}}</h5>
 							<ul class="list-group list-group-flush">
 								{% for trans in block.blk_data %}
-									<li class="list-group-item">{{trans.sender}} has sent ₹{{trans.amount}} to {{trans.receiver}} at {{trans.time_stamp}}</li>
+									<li class="list-group-item">{{trans.sender}} has sent {{trans.amount}} Crycoins to {{trans.receiver}} at {{trans.time_stamp}}</li>
 								{% endfor %}
 							</ul>
 							<p class="card-text">Block Nonce {{block.nonce}}</p>
@@ -45,7 +45,7 @@
 						<h5 class="card-title">Primary key {{newBlock.primary_ky}}</h5>
 						<ul class="list-group list-group-flush">
 							{% for trans in newBlock.blk_data %}
-								<li class="list-group-item">{{trans.sender}} has sent ₹{{trans.amount}} to {{trans.receiver}} at {{trans.time_stamp}}</li>
+								<li class="list-group-item">{{trans.sender}} has sent {{trans.amount}} Crycoins to {{trans.receiver}} at {{trans.time_stamp}}</li>
 							{% endfor %}
 						</ul>
 						<!-- <h6 class="card-subtitle mb-2 text-muted">{{newBlock.blk_data}}</h6> -->
