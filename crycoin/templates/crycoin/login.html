@@ -1,0 +1,35 @@
+{% extends "crycoin/layout.html" %}
+
+{% block body %}
+    <div class="container" style="padding-left: 200px; margin-top:5%;">
+      {% if message %}
+        <div class="alert alert-success" role="alert">
+          {{message}}
+        </div>
+      {% endif %}
+        <form class="" novalidate action="{% url 'register_nodes' %}" method="post">
+          {% csrf_token %}
+          <div class="card text-center" style="width: 40rem;">
+            <div class="card-header">
+              Register Node
+            </div>
+            <div class="card-body">
+              <div class="row col-md-12">
+                <label for="validationCustomUsername" class="form-label">Node</label>
+                <div class="input-group has-validation">
+                  <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
+                  <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" name="node" required>
+                  <div class="invalid-feedback">
+                    Please choose a Node.
+                  </div>
+                </div>
+              </div>
+              <div class="col-12" style="padding-top: 20px;">
+                <button class="btn btn-primary" type="submit">Submit</button>
+              </div>
+            </div>
+          </div>
+            
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "crycoin/layout.html" %}
+{% block body %}
+    <a class="nav-link disabled">Balance ₹{{balance}}</a>
+    <div class="container" style="margin-left: 10%;">
+        <h1 class="display-3">Transaction List</h1>
+        <form action="{% url 'mine' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name='transaction_list' value={{trans_list}}>
+            <button class="btn btn-info" type="submit">Mine Block</button>
+        </form>
+        <!-- <a class="btn btn-info" href="{% url 'blockchain_view' %}">View Blockchain</a> -->
+        <row class="row" style="margin-top: 5%;">
+            {% for trans in trans_list %}
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">To {{trans.receiver}}</h5>
+                        {% if trans.signature %}
+                            <h6 class="card-subtitle mb-2 text-muted">Signed</h6>
+                        {% endif %}
+                        <p class="card-text">You have received ₹{{trans.amount}} from {{trans.sender}}</p>
+                        <a href="#" class="card-link">{{trans.time_stamp}}</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </row>
+</div>
+{% endblock body %}
