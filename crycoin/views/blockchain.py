@@ -37,6 +37,7 @@ class Blockchain (object):
         maxLength = len(self.chain);
 
         for node in neighbors:
+            print('node---- ',node)
             response = requests.get(f'http://{node}/chain');
             print('my res---->',response)
             if response.status_code == 200:
@@ -47,6 +48,9 @@ class Blockchain (object):
                 if length > maxLength:
                     maxLength = length;
                     newChain = chain;
+                elif length == maxLength:
+                    print('Not replacing the chain due contradiction')
+                    newChain = False
 
         if newChain:
             self.chain = self.chainJSONdecode(newChain);
